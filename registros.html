@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <title>Registrar despesas</title>
+
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    
+    <!--Normalize CSS-->
+    <link rel='stylesheet' type='text/css' media='screen' href='css/normalize.css'>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="bootstrap4.5.2/css/bootstrap.min.css">
+
+    <!--Styles-->
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+	
+	<!--Media Queries-->
+    <link rel="stylesheet" media='screen' href="css/media-queries.css">
+
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src="https://kit.fontawesome.com/90983e2c4a.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class="main">
+
+        <header class="navbar navbar-expand-md navbar-dark bg-primary">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="index.html"><img src="img/logo.png" alt=""></a>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <nav class="collapse navbar-collapse" id="navbarHeader">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="registros.html">Registros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="consultas.html">Consultas</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="container">
+
+            <h3 class="mt-4 text-center">Adicionar registro</h3>
+            
+            <form class="row mt-3">
+
+                <div class="input col-lg-4 col-sm-6 ">
+                    <input type="number" name="ano" id="ano" placeholder="Ano" class="form-control">
+                </div>
+                
+                <div class="input col-lg-4 col-sm-6">
+                    <select name="mes" id="mes" class="form-control">
+                        <option value="undefined">Mês</option>
+                        <option value="01">Janeiro</option>
+                        <option value="02">Fevereiro</option>
+                        <option value="03">Março</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Maio</option>
+                        <option value="06">Junho</option>
+                        <option value="07">Julho</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                </div>
+
+                <div class="input col-lg-4 col-sm-6 ">
+                    <input type="number" name="dia" id="dia" placeholder="Dia" class="form-control">
+                </div>
+
+                <div class="input col-lg-4 col-sm-6">
+                    <select name="tipo" id="tipo" class="form-control">
+                        <option value="undefined">Tipo de despesa</option>
+                        <option value="lazer">Lazer</option>
+                        <option value="saude">Saúde</option>
+                        <option value="alimentacao">Alimentação</option>
+                        <option value="transporte">Transporte</option>
+                        <option value="educacao">Educação</option>
+                        <option value="moradia">Moradia</option>
+                    </select>
+                </div>
+
+                <div class="input col-lg-4 col-sm-6">
+                    <input type="text" name="descricao" id="descricao" placeholder="Descrição" class="form-control">
+                </div>
+
+                <div class="input col-lg-4 col-sm-6">
+                    <input type="number" name="valor" id="valor" placeholder="Valor" class="form-control">
+                </div>
+
+                <div class="input col-sm-12">
+                    <button class="btn btn-primary form-control"><i class="fas fa-plus"></i></button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <script src="js/main.js"></script>
+
+    <!--Jquery, Popper and Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="bootstrap4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
