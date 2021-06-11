@@ -61,7 +61,7 @@
 
             <h3 class="mt-4 text-center">Adicionar registro</h3>
             
-            <form class="row mt-3">
+            <div class="row mt-3">
 
                 <div class="input col-lg-4 col-sm-6 ">
                     <input type="number" name="ano" id="ano" placeholder="Ano" class="form-control">
@@ -69,7 +69,7 @@
                 
                 <div class="input col-lg-4 col-sm-6">
                     <select name="mes" id="mes" class="form-control">
-                        <option value="undefined">Mês</option>
+                        <option value="">Mês</option>
                         <option value="01">Janeiro</option>
                         <option value="02">Fevereiro</option>
                         <option value="03">Março</option>
@@ -91,7 +91,7 @@
 
                 <div class="input col-lg-4 col-sm-6">
                     <select name="tipo" id="tipo" class="form-control">
-                        <option value="undefined">Tipo de despesa</option>
+                        <option value="">Tipo de despesa</option>
                         <option value="lazer">Lazer</option>
                         <option value="saude">Saúde</option>
                         <option value="alimentacao">Alimentação</option>
@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="input col-lg-4 col-sm-6">
-                    <input type="text" name="descricao" id="descricao" placeholder="Descrição" class="form-control">
+                    <input type="text" name="descricao" id="descricao" placeholder="Descrição (opcional)" class="form-control">
                 </div>
 
                 <div class="input col-lg-4 col-sm-6">
@@ -110,12 +110,30 @@
                 </div>
 
                 <div class="input col-sm-12">
-                    <button class="btn btn-primary form-control"><i class="fas fa-plus"></i></button>
+                    <button class="btn btn-primary form-control" onclick="cadastrarDespesa()"><i class="fas fa-plus"></i></button>
                 </div>
 
-            </form>
+            </div>
         </div>
 
+    </div>
+
+    <!-- Modal Registra despesa -->
+    <div class="modal fade" id="modalRegistraDespesa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="corModal">
+                    <h5 class="modal-title" id="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="mensagemModal"></div>
+                <div class="modal-footer">
+                    <button type="button"id="closeModal" data-dismiss="modal">Voltar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="js/main.js"></script>
