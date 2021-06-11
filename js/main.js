@@ -6,6 +6,7 @@ class Despesa{
         this.tipo = tipo
         this.descricao = descricao
         this.valor = valor
+        this.erro = 'Esperando um erro'
     }
 
     validarDados(){
@@ -13,12 +14,14 @@ class Despesa{
         for(let i in this){
 
             if((this[i] === '' || this[i] === undefined || this[i] === null) && i != 'descricao'){
+                this.erro = 'Um campo está em branco, por favor verifique todos os campos e insira o valor necessário.'
                 return false
             }
-            //console.log(i + " " + this[i])
+
         }
 
         if((Number.isNaN(this.dia) || Number.isNaN(this.valor)) || this.dia <= 0){
+            this.erro = 'Um campo está com um valor inválido, por favor verifique todos os campos e corrija o problema.'
             return false
         }
 
@@ -29,6 +32,7 @@ class Despesa{
             case '09':
             case '11':
                 if(this.dia > 30){
+                    this.erro = 'O mês inserido possui somente 30 dias, por favor altere o valor.'
                     return false
                 }
                 break
@@ -40,6 +44,7 @@ class Despesa{
             case '10':
             case '12':
                 if(this.dia > 31){
+                    this.erro = 'Você não pode inserir mais que 31 dias. Por favor, faça a alteração necessária'
                     return false
                 }
                 break
@@ -47,9 +52,11 @@ class Despesa{
                 //Cálculo do ano bissexto e validando
                 if(this.ano % 4 === 0 && this.mes == '02'){
                     if(this.dia > 29){
+                        this.erro = 'O ano inserido é bissexto, porém fevereiro não pode ter mais de 29 dias. Por favor faça as alterações necessárias.'
                         return false
                     }  
                 } else if(this.dia > 28){
+                    this.erro = 'Fevereiro possui somente 28 dias. Por favor, faça a alteração nos valores'
                     return false
                 }  
         }
@@ -58,6 +65,7 @@ class Despesa{
         if(parseInt(this.ano) <= ano_atual && parseInt(this.ano) >= 1970){
             return true
         } else {
+            this.erro = 'O ano inserido precisa estar entre 1970 e o ano atual, por favor faça a alteração necessária.'
             return false
         }
     }
@@ -98,7 +106,7 @@ function cadastrarDespesa(){
         modalSucesso()
         db.armazenarDespesa(despesa)
     } else {
-        modalErro()
+        modalErro(despesa.erro)
     }
 
 }
@@ -111,10 +119,10 @@ function modalSucesso(){
     $('#modalRegistraDespesa').modal('show')
 }
 
-function modalErro(){
+function modalErro(erro){
     document.getElementById("corModal").className = "modal-header text-danger"
     document.getElementById("modal-title").innerHTML = "Algo deu errado"
-    document.getElementById("mensagemModal").innerHTML = "Um dos campos recebeu um valor inválido, por favor, altere os valores."
+    document.getElementById("mensagemModal").innerHTML = erro
     document.getElementById("closeModal").className = "btn btn-danger"
     $('#modalRegistraDespesa').modal('show')
 }

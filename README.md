@@ -11,6 +11,7 @@
 
 - [X] Design da interface
 - [X] Cadastro de despesa
+- [X] Adição de feedback visual
 - [ ] Busca e filtragem de despesa
 
 ### Pré-requisitos
@@ -21,10 +22,10 @@ Um navegador para internet
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- [HTML]
-- [CSS]
+- HTML
+- CSS
 - [Bootstrap](https://getbootstrap.com/)
-- [JavaScript]
+- JavaScript
 
 ### Autor
 
