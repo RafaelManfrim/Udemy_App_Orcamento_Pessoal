@@ -16,8 +16,8 @@
 - [X] Opção de exclusão de despesa
 
 ### Features Bônus
-- [] Menu de total de despesas
-- [] Confirmação de exclusão
+- [ ] Menu de total de despesas
+- [ ] Confirmação de exclusão
 
 ### Pré-requisitos
 
