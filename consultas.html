@@ -24,10 +24,10 @@
         <script src="js/html5shiv.js"></script>
     <![endif]-->
 
-    <script src="https://kit.fontawesome.com/90983e2c4a.js" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 
 </head>
-<body>
+<body onload="recuperaRegistros()">
 
     <div class="main">
 
@@ -59,9 +59,33 @@
         
         <div class="container">
 
-            <h3 class="mt-4 text-center">Consultar registro</h3>
+            <h3 class="my-4 text-center">Consultar registro</h3>
+
+            <div class="row">
+                <div class="col">
+                    <table class="table" >
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Tipo</th>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+        
+                        <tbody id="listaDespesas">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-primary" onclick="exibirFiltros()">Filtros</button>
+            </div>
             
-            <form class="row mt-3">
+            <div class="d-none" id="filtros">
 
                 <div class="input col-lg-4 col-sm-6 ">
                     <input type="number" name="ano" id="ano" placeholder="Ano" class="form-control">
@@ -69,7 +93,7 @@
                 
                 <div class="input col-lg-4 col-sm-6">
                     <select name="mes" id="mes" class="form-control">
-                        <option value="undefined">Mês</option>
+                        <option value="">Mês</option>
                         <option value="01">Janeiro</option>
                         <option value="02">Fevereiro</option>
                         <option value="03">Março</option>
@@ -91,7 +115,7 @@
 
                 <div class="input col-lg-4 col-sm-6">
                     <select name="tipo" id="tipo" class="form-control">
-                        <option value="undefined">Tipo de despesa</option>
+                        <option value="">Tipo de despesa</option>
                         <option value="lazer">Lazer</option>
                         <option value="saude">Saúde</option>
                         <option value="alimentacao">Alimentação</option>
@@ -102,23 +126,38 @@
                 </div>
 
                 <div class="input col-lg-4 col-sm-6">
-                    <input type="text" name="descricao" id="descricao" placeholder="Descrição" class="form-control">
-                </div>
-
-                <div class="input col-lg-4 col-sm-6">
                     <input type="number" name="valor" id="valor" placeholder="Valor" class="form-control">
                 </div>
 
-                <div class="input col-sm-12">
-                    <button class="btn btn-primary form-control"><i class="fas fa-search"></i></button>
+                <div class="input col-lg-2 col-sm-3">
+                    <button class="btn btn-primary form-control" onclick="pesquisarDespesa()">Filtrar registros</button>
+                </div>
+                <div class="input col-lg-2 col-sm-3">
+                    <button class="btn btn-primary form-control" onclick="limparFiltros()">Limpar filtros</button>
                 </div>
 
-            </form>
+            </div>
+        </div>
+
+        <!--Modall erro nos filtros-->
+        <div class="modal fade" id="modalErroFiltro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id="corModal">
+                        <h5 class="modal-title" id="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="mensagemModal"></div>
+                    <div class="modal-footer">
+                        <button type="button"id="closeModal" data-dismiss="modal">Voltar</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
-
-    <script src="js/main.js"></script>
 
     <!--Jquery, Popper and Bootstrap JS-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
