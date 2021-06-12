@@ -1,0 +1,28 @@
+@media (max-width: 500.98px) {
+    thead{
+        font-size: 0.8rem;
+    }
+    tbody{
+        font-size: 0.7rem;
+    }
+    .btn_exc{
+        padding: .200rem .45rem;
+    }
+}
+
+@media (max-width: 410.98px) {
+    thead{
+        font-size: 0.7rem;
+    }
+    tbody{
+        font-size: 0.6rem;
+    }
+    .btn_exc{
+        padding: .100rem .25rem;
+    }
+
+    .table td, .table th {
+        padding: .60rem;
+    }
+
+}

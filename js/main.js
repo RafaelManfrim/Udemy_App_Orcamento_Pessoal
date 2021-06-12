@@ -109,6 +109,8 @@ class Db{
             despesa.descricao = 'Sem descrição'
         }
 
+        despesa.valor = despesa.valor.toFixed(2)
+
         let id = this.controlaId()
         localStorage.setItem(id, JSON.stringify(despesa))
         localStorage.setItem("id", id)
@@ -121,6 +123,7 @@ class Db{
         for(let i = 1; i <= id; i++){
             let despesa_recuperada = JSON.parse(localStorage.getItem(i))
             if(despesa_recuperada !== null){
+                despesa_recuperada.id = i
                 despesas.push(despesa_recuperada)
             }
         }
@@ -156,6 +159,10 @@ class Db{
         }
 
         return despesas_filtradas
+    }
+
+    removerDespesa(id){
+        localStorage.removeItem(id)
     }
 
 }
@@ -222,15 +229,7 @@ function recuperaRegistros(){
     let listaDespesas = document.getElementById('listaDespesas')
 
     despesas.forEach(function(d){
-
-        let linha = listaDespesas.insertRow()
-
-        linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`
-        linha.insertCell(1).innerHTML = d.tipo
-        linha.insertCell(2).innerHTML = d.descricao
-        linha.insertCell(3).innerHTML = d.valor
-        linha.insertCell(4)
-
+        inclusaoTabela(d)
     })
 }
 
@@ -265,15 +264,7 @@ function pesquisarDespesa(){
     listaDespesas.innerHTML = ''
 
     despesas_pos_filtro.forEach(function(d){
-
-        let linha = listaDespesas.insertRow()
-
-        linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`
-        linha.insertCell(1).innerHTML = d.tipo
-        linha.insertCell(2).innerHTML = d.descricao
-        linha.insertCell(3).innerHTML = d.valor
-        linha.insertCell(4)
-
+        inclusaoTabela(d, despesas_pos_filtro)
     })
 }
 
@@ -287,4 +278,26 @@ function limparFiltros(){
     dia.value = ''
     tipo.value = ''
     valor.value = ''
+}
+
+function inclusaoTabela(d){
+
+    let linha = listaDespesas.insertRow()
+
+    linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`
+    linha.insertCell(1).innerHTML = d.tipo
+    linha.insertCell(2).innerHTML = d.descricao
+    linha_valor = linha.insertCell(3).innerHTML = 'R$ ' + d.valor
+
+    let btn = document.createElement('button')
+    btn.className = 'btn btn-danger btn_exc'
+    btn.id = 'id_despesa_'+ d.id
+    btn.innerHTML = '<i class="fas fa-times "></i>'
+    btn.onclick = function(){
+        let id = this.id.replace('id_despesa_', '')
+        db.removerDespesa(id)
+        window.location.reload()
+    }
+    linha.insertCell(4).append(btn)
+
 }
